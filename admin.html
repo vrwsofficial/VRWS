@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VRWS - অ্যাডমিন প্যানেল</title>
+    <title>VRWS - Admin Dashboard</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #2f3640; color: #f5f6fa; }
-        .admin-container { max-width: 600px; margin: 50px auto; background: #353b48; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        h2 { text-align: center; color: #4cd137; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #1e272e; color: #f5f6fa; padding: 20px; }
+        .admin-container { max-width: 600px; margin: 40px auto; background: #2f3640; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        h2 { text-align: center; color: #00d2d3; margin-bottom: 20px; font-size: 22px; }
         .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; }
-        input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid #718093; border-radius: 4px; background: #f5f6fa; color: #333; }
-        button { background: #4cd137; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; font-weight: bold; }
-        button:hover { background: #44bd32; }
-        .back-link { display: block; text-align: center; margin-top: 15px; color: #00a8ff; text-decoration: none; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
+        input[type="text"], textarea { width: 100%; padding: 12px; border: 1px solid #718093; border-radius: 5px; background: #f5f6fa; color: #333; font-size: 14px; }
+        button { background: #00d2d3; color: #1e272e; padding: 12px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #48dbfb; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #ff9f43; text-decoration: none; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <div class="admin-container">
-        <h2>VRWS অ্যাডমিন ড্যাশবোর্ড</h2>
-        <form id="adminForm">
+        <h2>VRWS Admin Control Panel</h2>
+        <form>
             <div class="form-group">
-                <label for="fbLink">ফেসবুক লিংক আপডেট করুন:</label>
-                <input type="text" id="fbLink" placeholder="https://facebook.com/yourpage">
+                <label>Update Social Media Link (Facebook / WhatsApp):</label>
+                <input type="text" placeholder="https://facebook.com/yourpage">
             </div>
 
             <div class="form-group">
-                <label for="waLink">হোয়াটসঅ্যাপ লিংক বা নম্বর:</label>
-                <input type="text" id="waLink" placeholder="01897-079121">
+                <label>Add New Member / Leadership:</label>
+                <input type="text" placeholder="Name and Designation">
             </div>
 
             <div class="form-group">
-                <label for="recentWork">সাম্প্রতিক কাজের বিবরণ ও ছবি/ভিডিও লিংক:</label>
-                <textarea id="recentWork" rows="4" placeholder="কাজের বিবরণ এখানে লিখুন..."></textarea>
+                <label>Add Recent Work / Event Description & Media Link:</label>
+                <textarea rows="4" placeholder="Write event details and paste photo/video link..."></textarea>
             </div>
 
-            <button type="button" alert("সংরক্ষণ করা হয়েছে!")>পরিবর্তন সেভ করুন</button>
+            <button type="button" onclick="alert('Changes saved successfully!')">Save & Update Website</button>
         </form>
         
-        <a href="index.html" class="back-link">← ওয়েবসাইটে ফিরে যান</a>
+        <a href="index.html" class="back-link">← Back to Website</a>
     </div>
 
 </body>
