@@ -1,55 +1,145 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice of Rohingya Women and Students (VRWS)</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f6f9; color: #333; }
-        header { background: #0a3d62; color: #fff; padding: 20px; text-align: center; }
-        nav { background: #1e3799; padding: 10px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .container { max-width: 1000px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .social-icons a { display: inline-block; margin: 10px; padding: 10px 20px; background: #009432; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .social-icons a.fb { background: #1877f2; }
-        .social-icons a.wa { background: #25d366; }
-        footer { text-align: center; padding: 15px; background: #222; color: white; margin-top: 30px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+        
+        /* Header Section */
+        header { background-color: #0b3c29; color: #fff; padding: 30px 20px; text-align: center; }
+        .logo-img { width: 70px; height: 70px; border-radius: 50%; margin-bottom: 10px; background: #fff; display: inline-block; }
+        header h1 { font-size: 24px; margin-bottom: 5px; color: #fff; }
+        header p { font-size: 13px; color: #dcdde1; max-width: 600px; margin: 0 auto; }
+
+        /* Navigation Bar */
+        nav { background-color: #0b3c29; display: flex; justify-content: center; flex-wrap: wrap; padding: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
+        nav a { color: #fff; background: rgba(255, 255, 255, 0.1); padding: 8px 15px; margin: 5px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s; }
+        nav a:hover, nav a.admin-btn { background-color: #d35400; }
+
+        /* Container & Sections */
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .section-box { background: #fff; border: 1px solid #e1e1e1; border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        h2 { font-size: 20px; color: #0b3c29; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid #0b3c29; display: inline-block; }
+        h3 { font-size: 16px; color: #2c3e50; margin-bottom: 8px; }
+        p, li { font-size: 14px; color: #555; margin-bottom: 10px; }
+        ul { padding-left: 20px; }
+
+        /* Hero Banner inside content */
+        .hero-banner { background: linear-gradient(rgba(11, 60, 41, 0.9), rgba(11, 60, 41, 0.9)), url('banner.jpg'); color: white; padding: 40px 20px; text-align: center; border-radius: 10px; margin-bottom: 20px; }
+        .hero-banner h2 { color: #fff; border: none; font-size: 24px; margin-bottom: 10px; }
+        .btn { display: inline-block; background: #d35400; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+
+        /* Leadership Cards */
+        .leader-card { display: flex; align-items: center; background: #fff; border: 1px solid #e1e1e1; padding: 15px; border-radius: 8px; margin-bottom: 12px; }
+        .leader-img { width: 60px; height: 60px; background: #ccc; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #666; }
+        .leader-info h4 { font-size: 15px; color: #222; }
+        .leader-info p { font-size: 12px; color: #d35400; font-weight: bold; margin: 2px 0; }
+        .email-pill { display: inline-block; background: #f1f2f6; padding: 4px 10px; border-radius: 15px; font-size: 11px; color: #555; border: 1px solid #dcdde1; }
+
+        /* Footer */
+        footer { background: #111; color: #aaa; text-align: center; padding: 20px; font-size: 12px; margin-top: 40px; }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <h1>Voice of Rohingya Women and Students (VRWS)</h1>
+        <div class="logo-img">VRWS</div>
+        <h1>Voice of Rohingya Women and Students</h1>
         <p>Empowering Rohingya women, girls, youths, students and promoting peacebuilding.</p>
     </header>
 
+    <!-- Navigation -->
     <nav>
-        <a href="#home">হোম</a>
-        <a href="#about">আমাদের সম্পর্কে</a>
-        <a href="#work">সাম্প্রতিক কাজ</a>
-        <a href="#contact">যোগাযোগ</a>
-        <a href="admin.html" target="_blank" style="color: #ff4757;">অ্যাডমিন প্যানেল</a>
+        <a href="#about">About Us</a>
+        <a href="#activities">Activities</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#works">Recent Works</a>
+        <a href="#contact">Contact Us</a>
+        <a href="admin.html" class="admin-btn">Admin Panel</a>
     </nav>
 
-    <div class="container" id="home">
-        <h2>স্বাগতম VRWS-এ</h2>
-        <p>VRWS একটি কমিউনিটি-ভিত্তিক সংগঠন যা রোহিঙ্গা নারী, তরুণ, শিক্ষার্থী এবং অধিকার রক্ষায় কাজ করে যাচ্ছে।</p>
-    </div>
+    <div class="container">
 
-    <div class="container" id="contact">
-        <h2>যোগাযোগ ও সোশ্যাল মিডিয়া</h2>
-        <p>ফোন: 01897-079121</p>
-        <p>ইমেইল: voiceofrohingyawomenandstudent@gmail.com</p>
-        
-        <div class="social-icons">
-            <a href="https://facebook.com" target="_blank" class="fb">ফেসবুক পেজ</a>
-            <a href="https://whatsapp.com" target="_blank" class="wa">হোয়াটসঅ্যাপ</a>
-            <a href="mailto:voiceofrohingyawomenandstudent@gmail.com">ইমেইল করুন</a>
+        <!-- Hero Section -->
+        <div class="hero-banner">
+            <h2>Empowering Rohingya Community</h2>
+            <p>Advocating for rights, dignity, education, and sustainable community development.</p>
+            <a href="#contact" class="btn">Get Involved</a>
         </div>
+
+        <!-- About Us Section -->
+        <div class="section-box" id="about">
+            <h2>About Us</h2>
+            <p><strong>Voice of Rohingya Women and Students (VRWS)</strong> is a community-based organization led by Rohingya women, empowering Rohingya women, girls, youths, students and LGBTQ individuals, while advocating for the rights of the Rohingya community and promoting peacebuilding.</p>
+            
+            <h3 style="margin-top: 15px;">Our Vision</h3>
+            <p>To build a dignified, peaceful, and inclusive society where every individual enjoys fundamental human rights, equality, and safety.</p>
+
+            <h3 style="margin-top: 15px;">Our Mission</h3>
+            <p>To uplift vulnerable groups through education, advocacy, leadership training, and active community participation.</p>
+        </div>
+
+        <!-- Activities Section -->
+        <div class="section-box" id="activities">
+            <h2>Our Core Activities</h2>
+            <ul>
+                <li><strong>Women & Youth Empowerment:</strong> Creating platforms for leadership and skill development.</li>
+                <li><strong>Education & Learning:</strong> Supporting educational initiatives for children and youth.</li>
+                <li><strong>Human Rights Advocacy:</strong> Raising awareness on rights, dignity, and social justice.</li>
+                <li><strong>Peacebuilding:</strong> Fostering social cohesion and community harmony.</li>
+            </ul>
+        </div>
+
+        <!-- Leadership Section -->
+        <div class="section-box" id="leadership">
+            <h2>Our Leadership Team</h2>
+            <p style="margin-bottom: 15px; font-size: 13px;">Dedicated individuals driving our mission forward.</p>
+            
+            <div class="leader-card">
+                <div class="leader-img">Photo</div>
+                <div class="leader-info">
+                    <h4>Executive Director</h4>
+                    <p>Leadership & Management</p>
+                    <span class="email-pill">voiceofrohingyawomenandstudent@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="leader-card">
+                <div class="leader-img">Photo</div>
+                <div class="leader-info">
+                    <h4>Deputy Director</h4>
+                    <p>Operations & Programs</p>
+                    <span class="email-pill">voiceofrohingyawomenandstudent@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Works Section -->
+        <div class="section-box" id="works">
+            <h2>Recent Works & Events</h2>
+            <p>A glimpse into our recent community initiatives and programs.</p>
+            <div style="background: #f1f2f6; padding: 20px; text-align: center; border-radius: 6px; color: #7f8c8d; margin-top: 10px;">
+                [ Recent photos and videos will be updated here via Admin Panel ]
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section-box" id="contact">
+            <h2>Contact Us</h2>
+            <p>If organizations, donors, and partners wish to connect with us, please reach out via official email or phone below:</p>
+            <p style="margin-top: 10px;"><strong>Official Email:</strong> voiceofrohingyawomenandstudent@gmail.com</p>
+            <p><strong>Phone / WhatsApp:</strong> 01897-079121</p>
+        </div>
+
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Voice of Rohingya Women and Students. All Rights Reserved.</p>
+        <p>&copy; 2026 Voice of Rohingya Women and Students (VRWS). All Rights Reserved.</p>
     </footer>
 
 </body>
