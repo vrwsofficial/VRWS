@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRWS - অ্যাডমিন প্যানেল</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #2f3640; color: #f5f6fa; }
+        .admin-container { max-width: 600px; margin: 50px auto; background: #353b48; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        h2 { text-align: center; color: #4cd137; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid #718093; border-radius: 4px; background: #f5f6fa; color: #333; }
+        button { background: #4cd137; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; font-weight: bold; }
+        button:hover { background: #44bd32; }
+        .back-link { display: block; text-align: center; margin-top: 15px; color: #00a8ff; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <h2>VRWS অ্যাডমিন ড্যাশবোর্ড</h2>
+        <form id="adminForm">
+            <div class="form-group">
+                <label for="fbLink">ফেসবুক লিংক আপডেট করুন:</label>
+                <input type="text" id="fbLink" placeholder="https://facebook.com/yourpage">
+            </div>
+
+            <div class="form-group">
+                <label for="waLink">হোয়াটসঅ্যাপ লিংক বা নম্বর:</label>
+                <input type="text" id="waLink" placeholder="01897-079121">
+            </div>
+
+            <div class="form-group">
+                <label for="recentWork">সাম্প্রতিক কাজের বিবরণ ও ছবি/ভিডিও লিংক:</label>
+                <textarea id="recentWork" rows="4" placeholder="কাজের বিবরণ এখানে লিখুন..."></textarea>
+            </div>
+
+            <button type="button" alert("সংরক্ষণ করা হয়েছে!")>পরিবর্তন সেভ করুন</button>
+        </form>
+        
+        <a href="index.html" class="back-link">← ওয়েবসাইটে ফিরে যান</a>
+    </div>
+
+</body>
+</html>
