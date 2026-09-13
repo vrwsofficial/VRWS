@@ -22,8 +22,8 @@
         header { background: linear-gradient(135deg, #090d16 0%, #1e293b 100%); padding: 60px 20px; text-align: center; border-bottom: 3px solid var(--gold); }
         .logo-container { width: 95px; height: 95px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 3px solid var(--gold); overflow: hidden; }
         .logo-container img { width: 100%; height: 100%; object-fit: cover; }
-        header h1 { font-size: 28px; color: #ffffff; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.5px; }
-        header p { font-size: 14px; color: #94a3b8; max-width: 700px; margin: 0 auto; font-weight: 400; }
+        header h1 { font-size: 28px; color: #ffffff; margin-bottom: 10px; font-weight: 800; }
+        header p { font-size: 14px; color: #94a3b8; max-width: 700px; margin: 0 auto; }
 
         nav { background: #ffffff; display: flex; justify-content: center; flex-wrap: wrap; padding: 15px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-bottom: 1px solid #e2e8f0; }
         nav a { color: var(--text-main); padding: 8px 18px; margin: 0 4px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.2s ease; }
@@ -37,7 +37,6 @@
         ul { padding-left: 20px; }
         ul li { margin-bottom: 8px; color: var(--text-muted); }
 
-        /* Leadership Grid */
         .leader-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
         .leader-card { background: var(--bg-light); border: 1px solid #e2e8f0; padding: 25px; border-radius: 10px; text-align: center; }
         .leader-img { width: 85px; height: 85px; border-radius: 50%; margin: 0 auto 15px auto; object-fit: cover; border: 2px solid var(--gold); background: #cbd5e1; }
@@ -45,15 +44,12 @@
         .leader-card p { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
         .contact-info-text { font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px; }
 
-        /* Gallery Grid for Recent Works */
         .work-item { margin-bottom: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
-        .work-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .work-title { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
         .work-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
         .gallery-grid img { width: 100%; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1; }
 
-        /* Clean Contact Box */
         .contact-box { background: #f1f5f9; padding: 25px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--accent); }
         .contact-box p { margin-bottom: 10px; font-size: 15px; }
 
@@ -79,7 +75,6 @@
     </nav>
 
     <div class="container">
-
         <div class="section-card" id="about">
             <h2>About VRWS</h2>
             <p><strong>Voice of Rohingya Women and Students (VRWS)</strong> is a community-based organization led by Rohingya women, dedicated to empowering Rohingya women, girls, youths, students, and LGBTQ individuals, while vigorously advocating for the fundamental rights of the Rohingya community and promoting sustainable peacebuilding.</p>
@@ -98,11 +93,9 @@
             </ul>
         </div>
 
-        <!-- Leadership Section (Dynamic Container) -->
         <div class="section-card" id="leadership">
             <h2>Leadership & Management</h2>
             <div class="leader-grid" id="leadershipContainer">
-                <!-- Default Member: Rimas Khan -->
                 <div class="leader-card">
                     <img src="FB_IMG_1789302172737.jpg" alt="Rimas Khan" class="leader-img">
                     <h3>Rimas Khan</h3>
@@ -113,23 +106,13 @@
             </div>
         </div>
 
-        <!-- Recent Works Section (Dynamic Container with Gallery) -->
         <div class="section-card" id="works">
             <h2>Recent Works & Media</h2>
             <div id="worksContainer">
-                <div class="work-item">
-                    <div class="work-title">Community Empowerment Campaign 2026</div>
-                    <div class="work-desc">Our recent initiative focusing on youth leadership and educational support sessions inside the community.</div>
-                    <div class="gallery-grid">
-                        <!-- Placeholder gallery images -->
-                        <img src="FB_IMG_1789302172737.jpg" alt="Work Photo">
-                        <img src="FB_IMG_1789302172737.jpg" alt="Work Photo">
-                    </div>
-                </div>
+                <!-- Dynamically loaded works will appear here -->
             </div>
         </div>
 
-        <!-- Professional Contact Section -->
         <div class="section-card" id="contact">
             <h2>Contact Us</h2>
             <p>You can reach out to us directly through our official communication channels:</p>
@@ -138,12 +121,67 @@
                 <p><strong>Phone / WhatsApp:</strong> +880 1897-079121</p>
             </div>
         </div>
-
     </div>
 
     <footer>
         <p>&copy; 2026 Voice of Rohingya Women and Students (VRWS). All Rights Reserved.</p>
     </footer>
 
+    <!-- Firebase SDK & Realtime Load Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyDXiahQ2VrNeOJxDwNA5Qsd3-S2U60cAo4",
+          authDomain: "vrws-19987.firebaseapp.com",
+          projectId: "vrws-19987",
+          storageBucket: "vrws-19987.firebasestorage.app",
+          messagingSenderId: "418381310085",
+          appId: "1:418381310085:web:2d9f18a47bb656af8a61ec"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadData() {
+            const leaderContainer = document.getElementById('leadershipContainer');
+            try {
+                const querySnapshot = await getDocs(collection(db, "leaders"));
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    leaderContainer.innerHTML += `
+                        <div class="leader-card">
+                            <img src="${data.image}" alt="${data.name}" class="leader-img">
+                            <h3>${data.name}</h3>
+                            <p>${data.position}</p>
+                            <span class="contact-info-text">✉️ ${data.contact}</span>
+                        </div>`;
+                });
+            } catch (e) { console.log("Error loading leaders"); }
+
+            const worksContainer = document.getElementById('worksContainer');
+            try {
+                const querySnapshot = await getDocs(collection(db, "works"));
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    let imagesHtml = '';
+                    if(data.images) {
+                        data.images.split(',').forEach(img => {
+                            imagesHtml += `<img src="${img.trim()}" alt="Work Image">`;
+                        });
+                    }
+                    worksContainer.innerHTML += `
+                        <div class="work-item">
+                            <div class="work-title">${data.title}</div>
+                            <div class="work-desc">${data.description}</div>
+                            <div class="gallery-grid">${imagesHtml}</div>
+                        </div>`;
+                });
+            } catch (e) { console.log("Error loading works"); }
+        }
+
+        loadData();
+    </script>
 </body>
 </html>
