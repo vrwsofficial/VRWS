@@ -4,45 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice of Rohingya Women and Students (VRWS)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: #0f172a; color: #f8fafc; line-height: 1.7; }
-        
-        /* Unique Royal Header */
-        header { background: linear-gradient(135deg, #1e1b4b, #312e81); padding: 40px 20px; text-align: center; border-bottom: 4px solid #f59e0b; }
-        .logo-badge { width: 80px; height: 80px; background: #f59e0b; color: #1e1b4b; font-weight: bold; font-size: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
-        header h1 { font-size: 26px; color: #ffffff; margin-bottom: 8px; font-weight: 700; }
-        header p { font-size: 13px; color: #cbd5e1; max-width: 650px; margin: 0 auto; }
+        :root {
+            --primary: #0f172a;
+            --accent: #0284c7;
+            --gold: #d97706;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+        }
 
-        /* Modern Floating Navigation */
-        nav { background: #1e293b; display: flex; justify-content: center; flex-wrap: wrap; padding: 12px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        nav a { color: #cbd5e1; background: #334155; padding: 8px 16px; margin: 4px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
-        nav a:hover { background: #f59e0b; color: #0f172a; }
-        nav a.admin-link { background: #b91c1c; color: white; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.8; }
 
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        
-        /* Unique Section Cards */
-        .card { background: #1e293b; border-left: 5px solid #f59e0b; border-radius: 8px; padding: 30px; margin-bottom: 25px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
-        h2 { font-size: 22px; color: #f59e0b; margin-bottom: 15px; font-weight: 600; }
-        p, li { font-size: 14px; color: #94a3b8; margin-bottom: 10px; }
+        /* Professional Header */
+        header { background: linear-gradient(135deg, #090d16 0%, #1e293b 100%); padding: 60px 20px; text-align: center; border-bottom: 3px solid var(--gold); }
+        .logo-container { width: 95px; height: 95px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 3px solid var(--gold); overflow: hidden; }
+        .logo-container img { width: 100%; height: 100%; object-fit: cover; }
+        header h1 { font-size: 28px; color: #ffffff; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.5px; }
+        header p { font-size: 14px; color: #94a3b8; max-width: 700px; margin: 0 auto; font-weight: 400; }
+
+        /* Sleek Navigation Bar */
+        nav { background: #ffffff; display: flex; justify-content: center; flex-wrap: wrap; padding: 15px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-bottom: 1px solid #e2e8f0; }
+        nav a { color: var(--text-main); padding: 8px 18px; margin: 0 4px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.2s ease; }
+        nav a:hover { background: var(--bg-light); color: var(--accent); }
+        nav a.admin-btn { background: #fee2e2; color: #991b1b; }
+        nav a.admin-btn:hover { background: #fecaca; }
+
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+
+        /* Professional Cards */
+        .section-card { background: var(--card-bg); border-radius: 12px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 25px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
+        h2 { font-size: 22px; color: var(--primary); margin-bottom: 20px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        h2::before { content: ''; display: block; width: 6px; height: 22px; background: var(--gold); border-radius: 3px; }
+        p, li { font-size: 15px; color: var(--text-main); margin-bottom: 12px; }
         ul { padding-left: 20px; }
+        ul li { margin-bottom: 8px; color: var(--text-muted); }
 
-        /* Leadership Unique Profile */
-        .leader-box { background: #0f172a; border: 1px solid #334155; padding: 20px; border-radius: 8px; display: flex; align-items: center; margin-top: 15px; }
-        .leader-avatar { width: 70px; height: 70px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #0f172a; font-size: 18px; margin-right: 20px; flex-shrink: 0; }
-        .leader-details h3 { color: #f8fafc; font-size: 18px; }
-        .leader-details p { color: #f59e0b; font-size: 13px; font-weight: 600; margin: 2px 0; }
-        .contact-pill { display: inline-block; background: #1e293b; color: #cbd5e1; padding: 4px 12px; border-radius: 20px; font-size: 12px; border: 1px solid #475569; margin-top: 5px; }
+        /* Leadership Profile Box */
+        .leader-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .leader-card { background: var(--bg-light); border: 1px solid #e2e8f0; padding: 25px; border-radius: 10px; text-align: center; }
+        .leader-img { width: 80px; height: 80px; background: #cbd5e1; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #475569; font-size: 18px; border: 2px solid var(--gold); overflow: hidden; }
+        .leader-card h3 { font-size: 17px; color: var(--primary); font-weight: 700; margin-bottom: 4px; }
+        .leader-card p { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+        .email-tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 500; word-break: break-all; }
+
+        /* Contact Details Box */
+        .contact-box { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--accent); }
+        .contact-box p { margin-bottom: 8px; font-size: 14px; }
 
         /* Footer */
-        footer { background: #090d16; color: #64748b; text-align: center; padding: 25px; font-size: 12px; border-top: 1px solid #1e293b; margin-top: 50px; }
+        footer { background: #090d16; color: #94a3b8; text-align: center; padding: 30px; font-size: 13px; border-top: 1px solid #1e293b; margin-top: 60px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-badge">VRWS</div>
+        <!-- লোগো ইমেজ যুক্ত করার জায়গা (এখানে আপনার লোগোর ফাইল নেম বসাতে পারেন) -->
+        <div class="logo-container">
+            <img src="FB_IMG_1789302172737.jpg" alt="VRWS Logo">
+        </div>
         <h1>Voice of Rohingya Women and Students</h1>
         <p>Empowering Rohingya women, girls, youths, students and promoting peacebuilding.</p>
     </header>
@@ -53,56 +76,58 @@
         <a href="#leadership">Leadership</a>
         <a href="#works">Recent Works</a>
         <a href="#contact">Contact</a>
-        <a href="admin.html" class="admin-link">Admin Panel</a>
+        <a href="admin.html" class="admin-btn">Admin Panel</a>
     </nav>
 
     <div class="container">
 
         <!-- About Section -->
-        <div class="card" id="about">
+        <div class="section-card" id="about">
             <h2>About VRWS</h2>
-            <p><strong>Voice of Rohingya Women and Students (VRWS)</strong> is a community-based organization led by Rohingya women, empowering Rohingya women, girls, youths, students and LGBTQ individuals, while advocating for the rights of the Rohingya community and promoting peacebuilding.</p>
+            <p><strong>Voice of Rohingya Women and Students (VRWS)</strong> is a community-based organization led by Rohingya women, dedicated to empowering Rohingya women, girls, youths, students, and LGBTQ individuals, while vigorously advocating for the fundamental rights of the Rohingya community and promoting sustainable peacebuilding.</p>
             <br>
-            <h3>Our Vision & Mission</h3>
-            <p>To establish a peaceful, inclusive, and rights-based society through education, leadership development, and active community participation.</p>
+            <h3 style="font-size: 16px; color: var(--primary); margin-bottom: 8px;">Our Vision & Mission</h3>
+            <p>To establish a dignified, peaceful, and inclusive society where every individual enjoys fundamental human rights, equality, and safety.</p>
         </div>
 
         <!-- Activities Section -->
-        <div class="card" id="activities">
+        <div class="section-card" id="activities">
             <h2>Core Activities</h2>
             <ul>
-                <li>Women & Youth Empowerment through skill programs.</li>
-                <li>Educational initiatives and mentorship for students.</li>
-                <li>Human rights advocacy and community protection.</li>
-                <li>Peacebuilding and social harmony programs.</li>
+                <li><strong>Women & Youth Empowerment:</strong> Creating platforms for leadership and professional skill development.</li>
+                <li><strong>Education & Learning:</strong> Supporting educational initiatives and mentorship for children and youth.</li>
+                <li><strong>Human Rights Advocacy:</strong> Raising awareness on rights, dignity, and social justice.</li>
+                <li><strong>Peacebuilding:</strong> Fostering social cohesion, dialogue, and community harmony.</li>
             </ul>
         </div>
 
-        <!-- Leadership Section (Updated with Rimas Khan) -->
-        <div class="card" id="leadership">
+        <!-- Leadership Section -->
+        <div class="section-card" id="leadership">
             <h2>Leadership & Management</h2>
-            <div class="leader-box">
-                <div class="leader-avatar">RK</div>
-                <div class="leader-details">
+            <div class="leader-grid">
+                <div class="leader-card">
+                    <div class="leader-img">RK</div>
                     <h3>Rimas Khan</h3>
                     <p>Founder & Executive Director</p>
-                    <span class="contact-pill">✉️ voiceofrohingyawomenandstudent@gmail.com</span>
+                    <span class="email-tag">voiceofrohingyawomenandstudent@gmail.com</span>
                 </div>
             </div>
         </div>
 
         <!-- Recent Works Section -->
-        <div class="card" id="works">
+        <div class="section-card" id="works">
             <h2>Recent Works & Media</h2>
-            <p>Updates regarding our latest community campaigns, events, photos, and videos will appear here dynamically via the admin panel.</p>
+            <p>A glimpse into our recent community initiatives, campaigns, and advocacy programs. Dynamic updates are managed directly through the admin panel.</p>
         </div>
 
         <!-- Contact Section -->
-        <div class="card" id="contact">
+        <div class="section-card" id="contact">
             <h2>Get In Touch</h2>
-            <p>If organizations, donors, or partners wish to connect with us, please reach out directly:</p>
-            <p style="margin-top: 15px;"><strong>Official Email:</strong> voiceofrohingyawomenandstudent@gmail.com</p>
-            <p><strong>Phone / WhatsApp:</strong> +880 1897-079121</p>
+            <p>If organizations, donors, and partners wish to connect with us, please reach out via our official communication channels below:</p>
+            <div class="contact-box">
+                <p><strong>Official Email:</strong> voiceofrohingyawomenandstudent@gmail.com</p>
+                <p><strong>Phone / WhatsApp:</strong> +880 1897-079121</p>
+            </div>
         </div>
 
     </div>
