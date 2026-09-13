@@ -100,6 +100,7 @@
         .leader-card h3 { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
         .leader-card p { font-size: 11px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 10px; }
         .leader-contact { font-size: 11px; color: var(--text-muted); word-break: break-all; }
+        .leader-contact a { color: var(--accent-blue); text-decoration: none; }
 
         .work-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
         .work-card img { width: 100%; height: 160px; object-fit: cover; }
@@ -109,6 +110,19 @@
         .work-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; flex-grow: 1; }
         .work-date { font-size: 11px; color: #94a3b8; font-weight: 600; }
 
+        /* Contact Section Styling */
+        .contact-box { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-top: 50px; }
+        .get-touch-banner { background: var(--primary); color: #ffffff; padding: 24px; border-radius: 12px; }
+        .get-touch-banner h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+        .get-touch-banner p { font-size: 12px; color: #94a3b8; }
+        
+        .contact-methods { display: flex; flex-direction: column; gap: 12px; }
+        .contact-method-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; color: inherit; transition: 0.2s; }
+        .contact-method-item:hover { border-color: var(--accent-blue); background: #ffffff; }
+        .contact-icon-box { width: 36px; height: 36px; background: #e0f2fe; color: var(--accent-blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+        .contact-info span { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; }
+        .contact-info strong { font-size: 13px; font-weight: 600; color: var(--primary); word-break: break-all; }
+
         /* Footer */
         footer { background: var(--primary); color: #94a3b8; padding: 30px 20px; margin-top: 50px; text-align: center; font-size: 12px; }
 
@@ -116,7 +130,7 @@
             .nav-links { display: none; }
             .hero { grid-template-columns: 1fr; padding: 30px 15px; text-align: center; }
             .hero h1 { font-size: 26px; }
-            .about-grid { grid-template-columns: 1fr; padding: 20px; }
+            .about-grid, .contact-box { grid-template-columns: 1fr; padding: 20px; }
         }
     </style>
 </head>
@@ -136,6 +150,7 @@
             <a href="#activities">Activities</a>
             <a href="#leadership">Leadership</a>
             <a href="#works">Recent Works</a>
+            <a href="#contact">Contact</a>
             <a href="#contact" class="donate-btn">❤️ Donate</a>
         </div>
     </nav>
@@ -206,6 +221,30 @@
                 </div>
             </div>
             <div class="grid-container" id="worksContainer"></div>
+        </div>
+
+        <!-- Contact Section Restored -->
+        <div class="contact-box" id="contact">
+            <div class="get-touch-banner">
+                <h3>Get In Touch</h3>
+                <p>We are always here to listen, support and work together for a better future.</p>
+            </div>
+            <div class="contact-methods">
+                <a href="mailto:voiceofrohingyawomenandstudent@gmail.com" class="contact-method-item">
+                    <div class="contact-icon-box">✉️</div>
+                    <div class="contact-info">
+                        <span>Email Us</span>
+                        <strong>voiceofrohingyawomenandstudent@gmail.com</strong>
+                    </div>
+                </a>
+                <a href="tel:+8801897079121" class="contact-method-item">
+                    <div class="contact-icon-box">📞</div>
+                    <div class="contact-info">
+                        <span>Call Us</span>
+                        <strong>+880 1897-079121 (Mon - Fri)</strong>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 
