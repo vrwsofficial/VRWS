@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VRWS - Secure Admin Dashboard</title>
+    <title>VRWS - Secure Admin Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -19,56 +19,141 @@
         .submit-btn { background: #0284c7; color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.2s; }
         .submit-btn:hover { background: #0369a1; }
         .back-link { display: block; text-align: center; margin-top: 20px; color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500; }
-        .back-link:hover { color: #0f172a; }
+        #dashboard { display: none; }
     </style>
 </head>
 <body>
 
     <div class="admin-card">
-        <h2>VRWS Secret Admin Management</h2>
-        <form>
-            <!-- Add Leader Section -->
+        <!-- 1. Login Section -->
+        <div id="loginSection">
+            <h2>Admin Secure Login</h2>
+            <div class="form-group">
+                <label>Admin Email:</label>
+                <input type="email" id="adminEmail" placeholder="admin@vrws.org">
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="adminPassword" placeholder="Enter secure password">
+            </div>
+            <button type="button" class="submit-btn" id="loginBtn">Login to Panel</button>
+            <a href="index.html" class="back-link">&larr; Back to Public Website</a>
+        </div>
+
+        <!-- 2. Dashboard Section (After Login) -->
+        <div id="dashboard">
+            <h2>VRWS Content Management</h2>
+            
             <div class="form-section">
                 <h3>Add Leadership Member</h3>
                 <div class="form-group">
                     <label>Full Name:</label>
-                    <input type="text" placeholder="e.g. Rimas Khan">
+                    <input type="text" id="leaderName" placeholder="e.g. Rimas Khan">
                 </div>
                 <div class="form-group">
                     <label>Position / Designation:</label>
-                    <input type="text" placeholder="e.g. Founder & Executive Director">
+                    <input type="text" id="leaderPos" placeholder="e.g. Founder & Executive Director">
                 </div>
                 <div class="form-group">
                     <label>Contact Info (Email/Phone):</label>
-                    <input type="text" placeholder="e.g. voiceofrohingyawomenandstudent@gmail.com">
+                    <input type="text" id="leaderContact" placeholder="voiceofrohingyawomenandstudent@gmail.com">
                 </div>
                 <div class="form-group">
-                    <label>Profile Image Link:</label>
-                    <input type="text" placeholder="Paste image filename or URL...">
+                    <label>Profile Image URL/Filename:</label>
+                    <input type="text" id="leaderImg" placeholder="FB_IMG_1789302172737.jpg">
                 </div>
+                <button type="button" class="submit-btn" id="addLeaderBtn">Save Leader</button>
             </div>
 
-            <!-- Add Recent Work & Gallery Section -->
             <div class="form-section">
                 <h3>Add Recent Work & Gallery</h3>
                 <div class="form-group">
                     <label>Work Title:</label>
-                    <input type="text" placeholder="Enter title of the event/work...">
+                    <input type="text" id="workTitle" placeholder="Event Title...">
                 </div>
                 <div class="form-group">
                     <label>Description:</label>
-                    <textarea rows="3" placeholder="Write detailed description..."></textarea>
+                    <textarea id="workDesc" rows="3" placeholder="Write description..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Gallery Image Links (5-6 photos, separated by commas):</label>
-                    <textarea rows="2" placeholder="image1.jpg, image2.jpg, image3.jpg..."></textarea>
+                    <label>Gallery Image Links (Comma separated):</label>
+                    <textarea id="workImgs" rows="2" placeholder="img1.jpg, img2.jpg, img3.jpg"></textarea>
                 </div>
+                <button type="button" class="submit-btn" id="addWorkBtn">Publish Work</button>
             </div>
 
-            <button type="button" class="submit-btn" onclick="alert('Information submitted successfully! (Connect to backend/database to publish live)')">Publish Changes</button>
-        </form>
-        <a href="index.html" class="back-link">&larr; Back to Public Website</a>
+            <button type="button" class="submit-btn" style="background:#b91c1c;" id="logoutBtn">Logout</button>
+            <a href="index.html" class="back-link">&larr; View Public Website</a>
+        </div>
     </div>
 
+    <!-- Firebase Auth & Firestore Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyDXiahQ2VrNeOJxDwNA5Qsd3-S2U60cAo4",
+          authDomain: "vrws-19987.firebaseapp.com",
+          projectId: "vrws-19987",
+          storageBucket: "vrws-19987.firebasestorage.app",
+          messagingSenderId: "418381310085",
+          appId: "1:418381310085:web:2d9f18a47bb656af8a61ec"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            const email = document.getElementById('adminEmail').value;
+            const pass = document.getElementById('adminPassword').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                alert('Login Successful!');
+            } catch (error) {
+                alert('Login Failed: ' + error.message);
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await signOut(auth);
+            alert('Logged out successfully.');
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } else {
+                document.getElementById('loginSection').style.display = 'block';
+                document.getElementById('dashboard').style.display = 'none';
+            }
+        });
+
+        document.getElementById('addLeaderBtn').addEventListener('click', async () => {
+            try {
+                await addDoc(collection(db, "leaders"), {
+                    name: document.getElementById('leaderName').value,
+                    position: document.getElementById('leaderPos').value,
+                    contact: document.getElementById('leaderContact').value,
+                    image: document.getElementById('leaderImg').value
+                });
+                alert('Leader added successfully!');
+            } catch (e) { alert('Error: ' + e.message); }
+        });
+
+        document.getElementById('addWorkBtn').addEventListener('click', async () => {
+            try {
+                await addDoc(collection(db, "works"), {
+                    title: document.getElementById('workTitle').value,
+                    description: document.getElementById('workDesc').value,
+                    images: document.getElementById('workImgs').value
+                });
+                alert('Work published successfully!');
+            } catch (e) { alert('Error: ' + e.message); }
+        });
+    </script>
 </body>
 </html>
