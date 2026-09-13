@@ -3,281 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice of Rohingya Women and Students (VRWS)</title>
+    <title>VRWS - Voice of Rohingya Women and Students</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a192f;
-            --primary-light: #172a45;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --gold: #f59e0b;
+            --primary: #04142d;
+            --accent-blue: #0284c7;
+            --accent-blue-hover: #0369a1;
+            --teal: #0d9488;
+            --purple: #9333ea;
+            --orange: #ea580c;
             --bg-main: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #1e293b;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --shadow-subtle: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
-            --shadow-hover: 0 20px 35px -10px rgba(37, 99, 235, 0.15);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
+        body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-        /* Professional Gradient Hero Header */
-        header { 
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); 
-            padding: 100px 20px 90px 20px; 
-            text-align: center; 
-            position: relative; 
-            overflow: hidden;
-            border-bottom: 5px solid var(--gold);
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.2) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .logo-container { 
-            width: 120px; height: 120px; 
-            background: #ffffff; 
-            border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            margin: 0 auto 25px auto; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
-            border: 4px solid var(--gold); 
-            overflow: hidden; 
-            position: relative;
-            z-index: 1;
-        }
-        .logo-container img { width: 100%; height: 100%; object-fit: cover; }
-        header h1 { font-size: 38px; color: #ffffff; margin-bottom: 14px; font-weight: 800; letter-spacing: -0.5px; position: relative; z-index: 1; }
-        header p { font-size: 16px; color: #cbd5e1; max-width: 700px; margin: 0 auto; font-weight: 400; position: relative; z-index: 1; }
-
-        /* Glassmorphism Sticky Navigation */
+        /* Top Navigation Bar */
         nav { 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(12px); 
-            display: flex; justify-content: center; flex-wrap: wrap; 
-            padding: 14px 20px; 
+            background: #ffffff; 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 40px; 
             position: sticky; top: 0; z-index: 1000; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
             border-bottom: 1px solid var(--border-color); 
         }
-        nav a { 
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .nav-brand .brand-text { font-size: 18px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+        .nav-brand .brand-sub { font-size: 10px; font-weight: 600; color: var(--text-muted); display: block; }
+        
+        .nav-links { display: flex; align-items: center; gap: 25px; }
+        .nav-links a { 
             color: var(--text-main); 
-            padding: 8px 18px; 
-            margin: 0 6px; 
-            border-radius: 30px; 
             text-decoration: none; 
             font-size: 14px; 
             font-weight: 600; 
-            transition: all 0.3s ease; 
+            transition: color 0.2s; 
         }
-        nav a:hover { background: var(--accent); color: #ffffff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
-
-        /* Main Container & Section Cards */
-        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
-        .section-card { 
-            background: var(--card-bg); 
-            border-radius: 20px; 
-            padding: 50px; 
-            margin-bottom: 40px; 
-            box-shadow: var(--shadow-subtle); 
-            border: 1px solid var(--border-color); 
-            transition: transform 0.3s ease;
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-blue); }
+        .donate-btn { 
+            background: var(--primary); 
+            color: #ffffff !important; 
+            padding: 10px 20px; 
+            border-radius: 30px; 
+            display: flex; align-items: center; gap: 8px; 
+            font-weight: 600; 
+            box-shadow: 0 4px 12px rgba(4, 20, 45, 0.2); 
+            transition: background 0.2s;
         }
-        
-        h2 { 
-            font-size: 26px; 
-            color: var(--primary); 
-            margin-bottom: 25px; 
-            font-weight: 700; 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-            letter-spacing: -0.5px;
-        }
-        h2::before { content: ''; display: block; width: 6px; height: 26px; background: var(--accent); border-radius: 4px; }
-        
-        p, li { font-size: 15px; color: var(--text-main); margin-bottom: 16px; }
-        ul { padding-left: 20px; }
-        ul li { margin-bottom: 12px; color: var(--text-muted); position: relative; }
+        .donate-btn:hover { background: var(--accent-blue); }
 
-        /* Leadership Grid Layout */
-        .leader-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
-        .leader-card { 
-            background: #ffffff; 
-            border: 1px solid var(--border-color); 
-            padding: 35px 25px; 
-            border-radius: 16px; 
-            text-align: center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            transition: all 0.3s ease;
-        }
-        .leader-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
-        .leader-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 18px auto; object-fit: cover; border: 3px solid var(--accent); box-shadow: 0 8px 20px rgba(37,99,235,0.15); }
-        .leader-card h3 { font-size: 18px; color: var(--primary); font-weight: 700; margin-bottom: 6px; }
-        .leader-card p { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .contact-info-text { font-size: 13px; color: var(--text-muted); display: block; margin-top: 8px; word-break: break-all; }
-        .leader-card a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-        .leader-card a:hover { color: var(--accent-hover); text-decoration: underline; }
-
-        /* Recent Works & Responsive Gallery */
-        .work-item { margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 30px; }
-        .work-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .work-title { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
-        .work-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.7; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
-        .gallery-grid img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-        .gallery-grid img:hover { transform: scale(1.03); }
-
-        /* Premium Contact Cards */
-        .contact-info-card {
-            display: flex;
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(135deg, #04142d 0%, #0c2d57 100%); 
+            padding: 70px 40px 100px 40px; 
+            position: relative; 
+            overflow: hidden;
+            color: #ffffff;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
             align-items: center;
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            padding: 18px 22px;
-            border-radius: 14px;
-            margin-bottom: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            max-width: 1400px;
+            margin: 20px auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(4,20,45,0.15);
         }
-        .contact-info-card:hover {
-            background: #ffffff;
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+        .hero-badge { 
+            display: inline-flex; align-items: center; gap: 8px; 
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            padding: 6px 16px; border-radius: 20px; 
+            font-size: 13px; font-weight: 500; margin-bottom: 25px; 
         }
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: #dbeafe;
-            color: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 18px;
-            flex-shrink: 0;
-            transition: background 0.3s;
-        }
-        .contact-info-card:hover .contact-icon { background: var(--accent); color: #ffffff; }
-        .contact-details span {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 3px;
-        }
-        .contact-details strong {
-            font-size: 15px;
-            color: var(--primary);
-            font-weight: 600;
-            word-break: break-all;
-        }
+        .hero h1 { font-size: 46px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; letter-spacing: -1px; }
+        .hero h1 span { color: #38bdf8; }
+        .hero p { font-size: 16px; color: #cbd5e1; max-width: 550px; margin-bottom: 30px; font-weight: 400; }
+        .hero-btns { display: flex; gap: 15px; }
+        .btn-primary { background: var(--accent-blue); color: #ffffff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3); transition: 0.2s; }
+        .btn-primary:hover { background: var(--accent-blue-hover); }
+        .btn-outline { background: transparent; color: #ffffff; border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.2s; }
+        .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: #ffffff; }
+        
+        .hero-img-box { position: relative; display: flex; justify-content: center; }
+        .hero-img-box img { width: 100%; max-width: 500px; height: 380px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 3px solid rgba(255,255,255,0.1); }
+        .hero-quote-tag { position: absolute; bottom: -20px; right: 20px; background: #ffffff; color: var(--primary); padding: 15px 20px; border-radius: 12px; font-weight: 700; font-style: italic; box-shadow: 0 10px 25px rgba(0,0,0,0.15); font-size: 14px; max-width: 240px; }
 
-        /* Professional Footer */
-        footer { background: #070f1e; color: #94a3b8; text-align: center; padding: 50px 20px; font-size: 14px; border-top: 1px solid #1e293b; margin-top: 80px; }
-        footer p { color: #94a3b8; }
+        /* Main Container */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 26px; }
-            .section-card { padding: 30px 20px; }
-            nav a { padding: 6px 12px; font-size: 13px; }
+        /* Section Headings */
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
+        .section-tag { font-size: 12px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 6px; }
+        .section-title { font-size: 28px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .view-all { font-size: 14px; font-weight: 700; color: var(--accent-blue); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+        .view-all:hover { text-decoration: underline; }
+
+        /* About Section (Who We Are) */
+        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; background: #ffffff; border-radius: 20px; padding: 45px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-bottom: 50px; align-items: center; }
+        .about-text p { font-size: 15px; color: var(--text-main); margin-bottom: 20px; }
+        .quote-box { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 25px; border-radius: 0 12px 12px 0; position: relative; }
+        .quote-box p { font-size: 16px; font-weight: 700; color: #166534; font-style: italic; margin-bottom: 10px; }
+        .quote-box span { font-size: 13px; font-weight: 600; color: #15803d; }
+        .about-img-preview img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+        /* Activities Cards Grid */
+        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .activity-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 30px 24px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; }
+        .activity-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); border-color: var(--accent-blue); }
+        .activity-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+        .activity-card h3 { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+        .activity-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+        .activity-arrow { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 12px; margin-top: auto; }
+
+        /* Mission Banner */
+        .mission-banner { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border-radius: 20px; padding: 45px 50px; color: #ffffff; display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; box-shadow: 0 15px 35px rgba(2, 132, 199, 0.2); }
+        .mission-banner h2 { font-size: 26px; font-weight: 800; margin-bottom: 10px; }
+        .mission-banner p { font-size: 15px; color: #e0f2fe; max-width: 600px; font-weight: 400; }
+
+        /* Leadership & Recent Works Sections */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        
+        .leader-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
+        .leader-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .leader-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px auto; border: 3px solid var(--accent-blue); }
+        .leader-card h3 { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .leader-card p { font-size: 12px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 12px; }
+        .leader-contact { font-size: 12px; color: var(--text-muted); word-break: break-all; }
+        .leader-contact a { color: var(--accent-blue); text-decoration: none; }
+
+        .work-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
+        .work-card img { width: 100%; height: 180px; object-fit: cover; }
+        .work-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .work-tag { font-size: 11px; font-weight: 700; color: var(--accent-blue); background: #e0f2fe; padding: 4px 10px; border-radius: 6px; width: fit-content; margin-bottom: 10px; text-transform: uppercase; }
+        .work-card h3 { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .work-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
+        .work-date { font-size: 11px; color: #94a3b8; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+
+        /* Contact Section & Footer */
+        .contact-box { background: #ffffff; border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        .get-touch-banner { background: var(--primary); color: #ffffff; padding: 30px; border-radius: 14px; }
+        .get-touch-banner h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .get-touch-banner p { font-size: 13px; color: #94a3b8; }
+        
+        .contact-methods { display: flex; flex-direction: column; gap: 15px; }
+        .contact-method-item { display: flex; align-items: center; gap: 15px; padding: 15px 20px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; text-decoration: none; color: inherit; transition: 0.2s; }
+        .contact-method-item:hover { border-color: var(--accent-blue); background: #ffffff; }
+        .contact-icon-box { width: 40px; height: 40px; background: #e0f2fe; color: var(--accent-blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+        .contact-info span { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; }
+        .contact-info strong { font-size: 14px; font-weight: 600; color: var(--primary); }
+
+        footer { background: var(--primary); color: #94a3b8; padding: 50px 40px 30px 40px; margin-top: 60px; border-top: 1px solid #1e293b; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .footer-brand { display: flex; align-items: center; gap: 12px; }
+        .footer-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .footer-brand span { color: #ffffff; font-weight: 700; font-size: 16px; }
+        .social-icons { display: flex; gap: 12px; }
+        .social-icons a { width: 36px; height: 36px; background: rgba(255,255,255,0.08); color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 14px; transition: 0.2s; }
+        .social-icons a:hover { background: var(--accent-blue); }
+        .footer-bottom { text-align: center; font-size: 13px; color: #64748b; margin-top: 25px; }
+
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; padding: 40px 20px; text-align: center; }
+            .hero p { margin: 0 auto 30px auto; }
+            .hero-btns { justify-content: center; }
+            .hero-img-box { margin-top: 30px; }
+            .about-grid, .contact-box, .mission-banner { grid-template-columns: 1fr; padding: 30px 20px; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="FB_IMG_1789302172737.jpg" alt="VRWS Logo">
-        </div>
-        <h1>Voice of Rohingya Women and Students</h1>
-        <p>Empowering Rohingya women, girls, youths, students and promoting sustainable peacebuilding.</p>
-    </header>
-
+    <!-- Top Navbar -->
     <nav>
-        <a href="#about">About</a>
-        <a href="#activities">Activities</a>
-        <a href="#leadership">Leadership</a>
-        <a href="#works">Recent Works</a>
-        <a href="#contact">Contact</a>
+        <a href="#" class="nav-brand">
+            <img src="FB_IMG_1789302172737.jpg" alt="VRWS Logo">
+            <div>
+                <span class="brand-text">VRWS</span>
+                <span class="brand-sub">Voice of Rohingya Women & Students</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#activities">Activities</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#works">Recent Works</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="donate-btn">❤️ Donate / Support</a>
+        </div>
     </nav>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>✨ Education • Equality • Sustainable Peace</span>
+            </div>
+            <h1>Voice of Rohingya <span>Women</span> and Students</h1>
+            <p>Empowering Rohingya women, girls, youths, students and promoting sustainable peacebuilding.</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn-primary">Learn More &rarr;</a>
+                <a href="#activities" class="btn-outline">Our Activities</a>
+            </div>
+        </div>
+        <div class="hero-img-box">
+            <img src="FB_IMG_1789302172737.jpg" alt="VRWS Banner">
+            <div class="hero-quote-tag">
+                "Stronger Women Brighter Future"
+            </div>
+        </div>
+    </section>
+
     <div class="container">
+        
         <!-- About Section -->
-        <div class="section-card" id="about">
-            <h2>About VRWS</h2>
-            <p><strong>Voice of Rohingya Women and Students (VRWS)</strong> is a dedicated community-based organization led by Rohingya women. We are passionately committed to empowering Rohingya women, girls, youths, students, and marginalized groups, while fiercely advocating for their fundamental human rights and fostering sustainable community peacebuilding.</p>
-            <br>
-            <h3 style="font-size: 17px; color: var(--primary); margin-bottom: 10px; font-weight: 700;">Our Vision & Mission</h3>
-            <p>To establish a dignified, peaceful, and inclusive society where every individual enjoys equal human rights, safety, and opportunities for growth.</p>
+        <div class="about-grid" id="about">
+            <div class="about-text">
+                <span class="section-tag">About VRWS</span>
+                <h2 class="section-title" style="margin-bottom: 15px;">Who We Are</h2>
+                <p>Voice of Rohingya Women and Students (VRWS) is a dedicated community-based organization led by Rohingya women. We are passionately committed to empowering Rohingya women, girls, youths, students, and marginalized groups, while fiercely advocating for their fundamental human rights and fostering sustainable community peacebuilding.</p>
+                <div class="quote-box">
+                    <p>"Education is the key to a better and peaceful future."</p>
+                    <span>— VRWS</span>
+                </div>
+            </div>
+            <div class="about-img-preview">
+                <img src="FB_IMG_1789302172737.jpg" alt="About VRWS">
+            </div>
         </div>
 
         <!-- Activities Section -->
-        <div class="section-card" id="activities">
-            <h2>Core Activities</h2>
-            <ul>
-                <li><strong>Women & Youth Empowerment:</strong> Creating dynamic platforms for leadership development, skill building, and self-reliance.</li>
-                <li><strong>Education & Mentorship:</strong> Supporting educational initiatives, learning circles, and academic support for children and youth.</li>
-                <li><strong>Human Rights Advocacy:</strong> Raising strong voices against injustice, advocating for dignity, safety, and social justice.</li>
-                <li><strong>Peacebuilding & Cohesion:</strong> Fostering social harmony, dialogue, and resilience within the community.</li>
-            </ul>
+        <div id="activities">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">Our Core Activities</span>
+                    <h2 class="section-title">What We Do</h2>
+                </div>
+                <a href="#activities" class="view-all">View All Activities &rarr;</a>
+            </div>
+
+            <div class="activities-grid">
+                <div class="activity-card" style="background: #fdf4ff;">
+                    <div class="activity-icon" style="background: #f3e8ff; color: var(--purple);">👥</div>
+                    <div>
+                        <h3>Women & Youth Empowerment</h3>
+                        <p>Creating dynamic platforms for leadership development, skill building, and self-reliance.</p>
+                    </div>
+                    <div class="activity-arrow" style="background: var(--purple);">&rarr;</div>
+                </div>
+
+                <div class="activity-card" style="background: #f0fdf4;">
+                    <div class="activity-icon" style="background: #dcfce7; color: var(--teal);">🎓</div>
+                    <div>
+                        <h3>Education & Mentorship</h3>
+                        <p>Supporting educational initiatives, learning circles, and academic support for children and youth.</p>
+                    </div>
+                    <div class="activity-arrow" style="background: var(--teal);">&rarr;</div>
+                </div>
+
+                <div class="activity-card" style="background: #eff6ff;">
+                    <div class="activity-icon" style="background: #dbeafe; color: var(--accent-blue);">⚖️</div>
+                    <div>
+                        <h3>Human Rights Advocacy</h3>
+                        <p>Raising strong voices against injustice, advocating for dignity, safety, and social justice.</p>
+                    </div>
+                    <div class="activity-arrow" style="background: var(--accent-blue);">&rarr;</div>
+                </div>
+
+                <div class="activity-card" style="background: #fff7ed;">
+                    <div class="activity-icon" style="background: #ffedd5; color: var(--orange);">🤝</div>
+                    <div>
+                        <h3>Peacebuilding & Cohesion</h3>
+                        <p>Fostering social harmony, dialogue, and resilience within the community.</p>
+                    </div>
+                    <div class="activity-arrow" style="background: var(--orange);">&rarr;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Banner -->
+        <div class="mission-banner">
+            <div>
+                <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #bae6fd; display: block; margin-bottom: 5px;">Our Mission</span>
+                <h2>A More Just, Safe and Inclusive Rohingya Community</h2>
+                <p>To establish a dignified, peaceful, and inclusive society where every individual enjoys equal human rights, safety, and opportunities for growth.</p>
+            </div>
+            <div>
+                <span style="font-size: 45px;">🌱</span>
+            </div>
         </div>
 
         <!-- Leadership Section -->
-        <div class="section-card" id="leadership">
-            <h2>Leadership & Management</h2>
-            <div class="leader-grid" id="leadershipContainer">
-                <!-- Dynamic Leaders will load here -->
+        <div id="leadership" style="margin-bottom: 50px;">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">Management Board</span>
+                    <h2 class="section-title">Our Leadership</h2>
+                </div>
+            </div>
+            <div class="grid-container" id="leadershipContainer">
+                <!-- Dynamic Leaders will load here via Firebase -->
             </div>
         </div>
 
         <!-- Recent Works Section -->
-        <div class="section-card" id="works">
-            <h2>Recent Works & Media</h2>
-            <div id="worksContainer">
-                <!-- Dynamic Works will load here -->
+        <div id="works" style="margin-bottom: 50px;">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">Recent Works & Media</span>
+                    <h2 class="section-title">Our Latest Updates</h2>
+                </div>
+                <a href="#works" class="view-all">View All &rarr;</a>
+            </div>
+            <div class="grid-container" id="worksContainer">
+                <!-- Dynamic Works will load here via Firebase -->
             </div>
         </div>
 
         <!-- Contact Section -->
-        <div class="section-card" id="contact">
-            <h2>Contact Us</h2>
-            <p style="margin-bottom: 25px;">Get in touch with our team for collaborations, partnership inquiries, or support.</p>
-            
-            <a href="mailto:voiceofrohingyawomenandstudent@gmail.com" class="contact-info-card">
-                <div class="contact-icon">✉️</div>
-                <div class="contact-details">
-                    <span>Official Email</span>
-                    <strong>voiceofrohingyawomenandstudent@gmail.com</strong>
-                </div>
-            </a>
-
-            <a href="tel:+8801897079121" class="contact-info-card">
-                <div class="contact-icon">📞</div>
-                <div class="contact-details">
-                    <span>Phone / WhatsApp</span>
-                    <strong>+880 1897-079121</strong>
-                </div>
-            </a>
+        <div class="contact-box" id="contact">
+            <div class="get-touch-banner">
+                <h3>Get In Touch</h3>
+                <p>We are always here to listen, support and work together for a better future.</p>
+            </div>
+            <div class="contact-methods">
+                <a href="mailto:voiceofrohingyawomenandstudent@gmail.com" class="contact-method-item">
+                    <div class="contact-icon-box">✉️</div>
+                    <div class="contact-info">
+                        <span>Email Us</span>
+                        <strong>voiceofrohingyawomenandstudent@gmail.com</strong>
+                    </div>
+                </a>
+                <a href="tel:+8801897079121" class="contact-method-item">
+                    <div class="contact-icon-box">📞</div>
+                    <div class="contact-info">
+                        <span>Call Us</span>
+                        <strong>+880 1897-079121 (Mon - Fri)</strong>
+                    </div>
+                </a>
+            </div>
         </div>
+
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Voice of Rohingya Women and Students (VRWS). All Rights Reserved.</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="FB_IMG_1789302172737.jpg" alt="VRWS Logo">
+                <span>VRWS - Voice of Rohingya Women and Students</span>
+            </div>
+            <div class="social-icons">
+                <a href="#" target="_blank">f</a>
+                <a href="#" target="_blank">▶</a>
+                <a href="#" target="_blank">X</a>
+                <a href="#" target="_blank">in</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 VRWS. All rights reserved. | Empowering Communities, Building Peace.
+        </div>
     </footer>
 
-    <!-- Firebase SDK & Realtime Load Script with Sorting -->
+    <!-- Firebase Realtime Dynamic Loader Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -294,7 +390,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        async function loadData() {
+        async function loadWebsiteData() {
             // Load Leadership
             const leaderContainer = document.getElementById('leadershipContainer');
             try {
@@ -309,7 +405,7 @@
                             <img src="${data.image}" alt="${data.name}" class="leader-img">
                             <h3>${data.name}</h3>
                             <p>${data.position}</p>
-                            <span class="contact-info-text">✉️ <a href="mailto:${data.contact}">${data.contact}</a></span>
+                            <span class="leader-contact">✉️ <a href="mailto:${data.contact}">${data.contact}</a></span>
                         </div>`;
                 });
             } catch (e) { 
@@ -321,7 +417,7 @@
                             <img src="${data.image}" alt="${data.name}" class="leader-img">
                             <h3>${data.name}</h3>
                             <p>${data.position}</p>
-                            <span class="contact-info-text">✉️ <a href="mailto:${data.contact}">${data.contact}</a></span>
+                            <span class="leader-contact">✉️ <a href="mailto:${data.contact}">${data.contact}</a></span>
                         </div>`;
                 });
             }
@@ -335,40 +431,46 @@
                 worksContainer.innerHTML = '';
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    let imagesHtml = '';
+                    let firstImg = "";
                     if(data.images) {
-                        data.images.split(',').forEach(img => {
-                            imagesHtml += `<img src="${img.trim()}" alt="Work Image">`;
-                        });
+                        const imgs = data.images.split(',');
+                        firstImg = imgs[0].trim();
                     }
                     worksContainer.innerHTML += `
-                        <div class="work-item">
-                            <div class="work-title">${data.title}</div>
-                            <div class="work-desc">${data.description}</div>
-                            <div class="gallery-grid">${imagesHtml}</div>
+                        <div class="work-card">
+                            ${firstImg ? `<img src="${firstImg}" alt="${data.title}">` : ''}
+                            <div class="work-content">
+                                <span class="work-tag">Update</span>
+                                <h3>${data.title}</h3>
+                                <p>${data.description}</p>
+                                <span class="work-date">📅 Recent Event</span>
+                            </div>
                         </div>`;
                 });
             } catch (e) { 
                 const fallbackWorks = await getDocs(collection(db, "works"));
                 fallbackWorks.forEach((doc) => {
                     const data = doc.data();
-                    let imagesHtml = '';
+                    let firstImg = "";
                     if(data.images) {
-                        data.images.split(',').forEach(img => {
-                            imagesHtml += `<img src="${img.trim()}" alt="Work Image">`;
-                        });
+                        const imgs = data.images.split(',');
+                        firstImg = imgs[0].trim();
                     }
                     worksContainer.innerHTML += `
-                        <div class="work-item">
-                            <div class="work-title">${data.title}</div>
-                            <div class="work-desc">${data.description}</div>
-                            <div class="gallery-grid">${imagesHtml}</div>
+                        <div class="work-card">
+                            ${firstImg ? `<img src="${firstImg}" alt="${data.title}">` : ''}
+                            <div class="work-content">
+                                <span class="work-tag">Update</span>
+                                <h3>${data.title}</h3>
+                                <p>${data.description}</p>
+                                <span class="work-date">📅 Recent Event</span>
+                            </div>
                         </div>`;
                 });
             }
         }
 
-        loadData();
+        loadWebsiteData();
     </script>
 </body>
 </html>
