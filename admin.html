@@ -3,45 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VRWS - Admin Control Dashboard</title>
+    <title>VRWS - Secure Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: #0b0f19; color: #f8fafc; padding: 20px; }
-        .admin-box { max-width: 600px; margin: 40px auto; background: #1e293b; padding: 35px; border-radius: 10px; border-top: 5px solid #f59e0b; box-shadow: 0 15px 25px rgba(0,0,0,0.5); }
-        h2 { text-align: center; color: #f59e0b; margin-bottom: 25px; font-size: 22px; }
-        .form-control { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-size: 13px; color: #cbd5e1; font-weight: 500; }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid #475569; border-radius: 6px; background: #0f172a; color: white; font-size: 14px; }
-        .save-btn { background: #f59e0b; color: #0b0f19; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 15px; width: 100%; font-weight: bold; transition: 0.3s; }
-        .save-btn:hover { background: #d97706; }
-        .back-btn { display: block; text-align: center; margin-top: 20px; color: #94a3b8; text-decoration: none; font-size: 13px; }
-        .back-btn:hover { color: white; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: #f1f5f9; color: #334155; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .admin-card { background: #ffffff; width: 100%; max-width: 600px; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 4px solid #d97706; }
+        h2 { color: #0f172a; margin-bottom: 25px; font-size: 20px; font-weight: 700; text-align: center; }
+        .form-section { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .form-section h3 { font-size: 15px; color: #0284c7; margin-bottom: 12px; font-weight: 700; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; color: #475569; }
+        input, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; background: #ffffff; color: #0f172a; }
+        input:focus, textarea:focus { outline: none; border-color: #0284c7; }
+        .submit-btn { background: #0284c7; color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.2s; }
+        .submit-btn:hover { background: #0369a1; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500; }
+        .back-link:hover { color: #0f172a; }
     </style>
 </head>
 <body>
 
-    <div class="admin-box">
-        <h2>VRWS Secure Admin Panel</h2>
+    <div class="admin-card">
+        <h2>VRWS Secret Admin Management</h2>
         <form>
-            <div class="form-control">
-                <label>Update Social Media / Facebook Links:</label>
-                <input type="text" placeholder="Paste link here...">
+            <!-- Add Leader Section -->
+            <div class="form-section">
+                <h3>Add Leadership Member</h3>
+                <div class="form-group">
+                    <label>Full Name:</label>
+                    <input type="text" placeholder="e.g. Rimas Khan">
+                </div>
+                <div class="form-group">
+                    <label>Position / Designation:</label>
+                    <input type="text" placeholder="e.g. Founder & Executive Director">
+                </div>
+                <div class="form-group">
+                    <label>Contact Info (Email/Phone):</label>
+                    <input type="text" placeholder="e.g. voiceofrohingyawomenandstudent@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label>Profile Image Link:</label>
+                    <input type="text" placeholder="Paste image filename or URL...">
+                </div>
             </div>
 
-            <div class="form-control">
-                <label>Add / Manage Leadership Members:</label>
-                <input type="text" placeholder="Enter name and title...">
+            <!-- Add Recent Work & Gallery Section -->
+            <div class="form-section">
+                <h3>Add Recent Work & Gallery</h3>
+                <div class="form-group">
+                    <label>Work Title:</label>
+                    <input type="text" placeholder="Enter title of the event/work...">
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <textarea rows="3" placeholder="Write detailed description..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Gallery Image Links (5-6 photos, separated by commas):</label>
+                    <textarea rows="2" placeholder="image1.jpg, image2.jpg, image3.jpg..."></textarea>
+                </div>
             </div>
 
-            <div class="form-control">
-                <label>Upload Recent Work, Event Details & Media Links:</label>
-                <textarea rows="4" placeholder="Write description and paste photo/video links..."></textarea>
-            </div>
-
-            <button type="button" class="save-btn" onclick="alert('Changes saved successfully!')">Update Website</button>
+            <button type="button" class="submit-btn" onclick="alert('Information submitted successfully! (Connect to backend/database to publish live)')">Publish Changes</button>
         </form>
-        
-        <a href="index.html" class="back-btn">← Back to Live Website</a>
+        <a href="index.html" class="back-link">&larr; Back to Public Website</a>
     </div>
 
 </body>
