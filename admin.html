@@ -87,11 +87,11 @@
         </div>
     </div>
 
-    <!-- Firebase Auth & Firestore Script -->
+    <!-- Firebase Auth & Firestore Script with Timestamp for Sorting -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyDXiahQ2VrNeOJxDwNA5Qsd3-S2U60cAo4",
@@ -132,26 +132,39 @@
             }
         });
 
+        // Add Leader with serverTimestamp for precise ordering
         document.getElementById('addLeaderBtn').addEventListener('click', async () => {
             try {
                 await addDoc(collection(db, "leaders"), {
                     name: document.getElementById('leaderName').value,
                     position: document.getElementById('leaderPos').value,
                     contact: document.getElementById('leaderContact').value,
-                    image: document.getElementById('leaderImg').value
+                    image: document.getElementById('leaderImg').value,
+                    createdAt: serverTimestamp() // সিরিয়াল মেইনটেইন করার জন্য এটি যুক্ত করা হয়েছে
                 });
                 alert('Leader added successfully!');
+                // ফর্ম রিসেট করা
+                document.getElementById('leaderName').value = '';
+                document.getElementById('leaderPos').value = '';
+                document.getElementById('leaderContact').value = '';
+                document.getElementById('leaderImg').value = '';
             } catch (e) { alert('Error: ' + e.message); }
         });
 
+        // Add Work with serverTimestamp for precise ordering
         document.getElementById('addWorkBtn').addEventListener('click', async () => {
             try {
                 await addDoc(collection(db, "works"), {
                     title: document.getElementById('workTitle').value,
                     description: document.getElementById('workDesc').value,
-                    images: document.getElementById('workImgs').value
+                    images: document.getElementById('workImgs').value,
+                    createdAt: serverTimestamp() // সিরিয়াল মেইনটেইন করার জন্য এটি যুক্ত করা হয়েছে
                 });
                 alert('Work published successfully!');
+                // ফর্ম রিসেট করা
+                document.getElementById('workTitle').value = '';
+                document.getElementById('workDesc').value = '';
+                document.getElementById('workImgs').value = '';
             } catch (e) { alert('Error: ' + e.message); }
         });
     </script>
