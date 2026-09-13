@@ -3,95 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VRWS - Secure Admin Panel</title>
+    <title>VRWS Admin Panel - Content Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #04142d;
+            --accent: #0284c7;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --bg: #f8fafc;
+            --border: #e2e8f0;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: #f1f5f9; color: #334155; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .admin-card { background: #ffffff; width: 100%; max-width: 600px; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 4px solid #d97706; }
-        h2 { color: #0f172a; margin-bottom: 25px; font-size: 20px; font-weight: 700; text-align: center; }
-        .form-section { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .form-section h3 { font-size: 15px; color: #0284c7; margin-bottom: 12px; font-weight: 700; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; color: #475569; }
-        input, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; background: #ffffff; color: #0f172a; }
-        input:focus, textarea:focus { outline: none; border-color: #0284c7; }
-        .submit-btn { background: #0284c7; color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.2s; }
-        .submit-btn:hover { background: #0369a1; }
-        .back-link { display: block; text-align: center; margin-top: 20px; color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500; }
-        #dashboard { display: none; }
+        body { background: var(--bg); color: #1e293b; padding: 20px; }
+        .header { max-width: 1000px; margin: 0 auto 30px auto; display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .header h1 { font-size: 20px; color: var(--primary); }
+        
+        .main-container { max-width: 1000px; margin: 0 auto; display: grid; gap: 30px; }
+        .admin-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .admin-card h2 { font-size: 18px; margin-bottom: 20px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 15px; }
+        input, textarea { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; transition: 0.2s; }
+        input:focus, textarea:focus { border-color: var(--accent); }
+        textarea { resize: vertical; height: 80px; grid-column: 1 / -1; }
+        
+        .btn { padding: 10px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; color: #fff; transition: 0.2s; }
+        .btn-primary { background: var(--accent); }
+        .btn-primary:hover { background: #0369a1; }
+        .btn-danger { background: var(--danger); padding: 6px 12px; font-size: 11px; }
+        .btn-danger:hover { background: #b91c1c; }
+        .btn-edit { background: #ca8a04; padding: 6px 12px; font-size: 11px; margin-right: 5px; }
+        .btn-edit:hover { background: #a16207; }
+
+        .item-list { margin-top: 20px; display: grid; gap: 10px; }
+        .item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; }
+        .item-info { display: flex; align-items: center; gap: 15px; }
+        .item-serial { background: var(--primary); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <div class="admin-card">
-        <!-- 1. Login Section -->
-        <div id="loginSection">
-            <h2>Admin Secure Login</h2>
-            <div class="form-group">
-                <label>Admin Email:</label>
-                <input type="email" id="adminEmail" placeholder="admin@vrws.org">
-            </div>
-            <div class="form-group">
-                <label>Password:</label>
-                <input type="password" id="adminPassword" placeholder="Enter secure password">
-            </div>
-            <button type="button" class="submit-btn" id="loginBtn">Login to Panel</button>
-            <a href="index.html" class="back-link">&larr; Back to Public Website</a>
-        </div>
-
-        <!-- 2. Dashboard Section (After Login) -->
-        <div id="dashboard">
-            <h2>VRWS Content Management</h2>
-            
-            <div class="form-section">
-                <h3>Add Leadership Member</h3>
-                <div class="form-group">
-                    <label>Full Name:</label>
-                    <input type="text" id="leaderName" placeholder="e.g. Rimas Khan">
-                </div>
-                <div class="form-group">
-                    <label>Position / Designation:</label>
-                    <input type="text" id="leaderPos" placeholder="e.g. Founder & Executive Director">
-                </div>
-                <div class="form-group">
-                    <label>Contact Info (Email/Phone):</label>
-                    <input type="text" id="leaderContact" placeholder="voiceofrohingyawomenandstudent@gmail.com">
-                </div>
-                <div class="form-group">
-                    <label>Profile Image URL/Filename:</label>
-                    <input type="text" id="leaderImg" placeholder="FB_IMG_1789302172737.jpg">
-                </div>
-                <button type="button" class="submit-btn" id="addLeaderBtn">Save Leader</button>
-            </div>
-
-            <div class="form-section">
-                <h3>Add Recent Work & Gallery</h3>
-                <div class="form-group">
-                    <label>Work Title:</label>
-                    <input type="text" id="workTitle" placeholder="Event Title...">
-                </div>
-                <div class="form-group">
-                    <label>Description:</label>
-                    <textarea id="workDesc" rows="3" placeholder="Write description..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Gallery Image Links (Comma separated):</label>
-                    <textarea id="workImgs" rows="2" placeholder="img1.jpg, img2.jpg, img3.jpg"></textarea>
-                </div>
-                <button type="button" class="submit-btn" id="addWorkBtn">Publish Work</button>
-            </div>
-
-            <button type="button" class="submit-btn" style="background:#b91c1c;" id="logoutBtn">Logout</button>
-            <a href="index.html" class="back-link">&larr; View Public Website</a>
-        </div>
+    <div class="header">
+        <h1>🛠️ VRWS Master Admin Dashboard</h1>
+        <a href="index.html" target="_blank" class="btn btn-primary" style="text-decoration:none;">View Website ↗</a>
     </div>
 
-    <!-- Firebase Auth & Firestore Script with Timestamp for Sorting -->
+    <div class="main-container">
+
+        <!-- 1. What We Do Management -->
+        <div class="admin-card">
+            <h2>Manage "What We Do" Sections</h2>
+            <form id="activityForm">
+                <input type="hidden" id="actId">
+                <div class="form-grid">
+                    <input type="number" id="actSerial" placeholder="Serial Number (e.g. 1, 2, 3)" required>
+                    <input type="text" id="actTitle" placeholder="Category Title" required>
+                    <input type="text" id="actIcon" placeholder="Emoji Icon (e.g. 👥)" required>
+                </div>
+                <textarea id="actDesc" placeholder="Short description..." required></textarea>
+                <button type="submit" class="btn btn-primary" id="actSubmitBtn">Add Activity Category</button>
+            </form>
+            <div class="item-list" id="activityList"></div>
+        </div>
+
+        <!-- 2. Leadership Management -->
+        <div class="admin-card">
+            <h2>Manage Leadership Board</h2>
+            <form id="leaderForm">
+                <input type="hidden" id="leadId">
+                <div class="form-grid">
+                    <input type="number" id="leadSerial" placeholder="Serial Number" required>
+                    <input type="text" id="leadName" placeholder="Leader Name" required>
+                    <input type="text" id="leadPos" placeholder="Position / Role" required>
+                    <input type="text" id="leadImg" placeholder="Image URL" required>
+                    <input type="email" id="leadContact" placeholder="Email Address" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="leadSubmitBtn">Add Leader</button>
+            </form>
+            <div class="item-list" id="leaderList"></div>
+        </div>
+
+        <!-- 3. Recent Works Management -->
+        <div class="admin-card">
+            <h2>Manage Recent Works & Updates</h2>
+            <form id="workForm">
+                <input type="hidden" id="workId">
+                <div class="form-grid">
+                    <input type="number" id="workSerial" placeholder="Serial Number" required>
+                    <input type="text" id="workTitle" placeholder="Work Title" required>
+                    <input type="text" id="workImgs" placeholder="Image URL (Comma separated for multiple)" required>
+                </div>
+                <textarea id="workDesc" placeholder="Work description..." required></textarea>
+                <button type="submit" class="btn btn-primary" id="workSubmitBtn">Add Recent Work</button>
+            </form>
+            <div class="item-list" id="workList"></div>
+        </div>
+
+    </div>
+
+    <!-- Firebase Admin Logic Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, orderBy, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyDXiahQ2VrNeOJxDwNA5Qsd3-S2U60cAo4",
@@ -103,70 +117,200 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
         const db = getFirestore(app);
 
-        document.getElementById('loginBtn').addEventListener('click', async () => {
-            const email = document.getElementById('adminEmail').value;
-            const pass = document.getElementById('adminPassword').value;
-            try {
-                await signInWithEmailAndPassword(auth, email, pass);
-                alert('Login Successful!');
-            } catch (error) {
-                alert('Login Failed: ' + error.message);
-            }
-        });
-
-        document.getElementById('logoutBtn').addEventListener('click', async () => {
-            await signOut(auth);
-            alert('Logged out successfully.');
-        });
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                document.getElementById('loginSection').style.display = 'none';
-                document.getElementById('dashboard').style.display = 'block';
+        // --- ACTIVITIES CRUD ---
+        const actForm = document.getElementById('activityForm');
+        actForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('actId').value;
+            const data = {
+                serial: Number(document.getElementById('actSerial').value),
+                title: document.getElementById('actTitle').value,
+                icon: document.getElementById('actIcon').value,
+                description: document.getElementById('actDesc').value
+            };
+            if(id) {
+                await updateDoc(doc(db, "activities", id), data);
+                alert("Activity updated successfully!");
             } else {
-                document.getElementById('loginSection').style.display = 'block';
-                document.getElementById('dashboard').style.display = 'none';
+                await addDoc(collection(db, "activities"), data);
+                alert("Activity added successfully!");
             }
+            actForm.reset();
+            document.getElementById('actId').value = '';
+            document.getElementById('actSubmitBtn').innerText = "Add Activity Category";
+            loadActivities();
         });
 
-        // Add Leader with serverTimestamp for precise ordering
-        document.getElementById('addLeaderBtn').addEventListener('click', async () => {
-            try {
-                await addDoc(collection(db, "leaders"), {
-                    name: document.getElementById('leaderName').value,
-                    position: document.getElementById('leaderPos').value,
-                    contact: document.getElementById('leaderContact').value,
-                    image: document.getElementById('leaderImg').value,
-                    createdAt: serverTimestamp() // সিরিয়াল মেইনটেইন করার জন্য এটি যুক্ত করা হয়েছে
-                });
-                alert('Leader added successfully!');
-                // ফর্ম রিসেট করা
-                document.getElementById('leaderName').value = '';
-                document.getElementById('leaderPos').value = '';
-                document.getElementById('leaderContact').value = '';
-                document.getElementById('leaderImg').value = '';
-            } catch (e) { alert('Error: ' + e.message); }
+        window.editActivity = async function(id) {
+            const d = (await getDoc(doc(db, "activities", id))).data();
+            document.getElementById('actId').value = id;
+            document.getElementById('actSerial').value = d.serial;
+            document.getElementById('actTitle').value = d.title;
+            document.getElementById('actIcon').value = d.icon;
+            document.getElementById('actDesc').value = d.description;
+            document.getElementById('actSubmitBtn').innerText = "Update Activity Category";
+        }
+
+        window.deleteActivity = async function(id) {
+            if(confirm("Are you sure to delete this activity?")) {
+                await deleteDoc(doc(db, "activities", id));
+                loadActivities();
+            }
+        }
+
+        async function loadActivities() {
+            const list = document.getElementById('activityList');
+            list.innerHTML = 'Loading...';
+            const snap = await getDocs(query(collection(db, "activities"), orderBy("serial", "asc")));
+            list.innerHTML = '';
+            snap.forEach(docSnap => {
+                const d = docSnap.data();
+                list.innerHTML += `
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-serial">#${d.serial}</span>
+                            <strong>${d.icon} ${d.title}</strong>
+                        </div>
+                        <div>
+                            <button class="btn btn-edit" onclick="editActivity('${docSnap.id}')">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteActivity('${docSnap.id}')">Delete</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // --- LEADERS CRUD ---
+        const leadForm = document.getElementById('leaderForm');
+        leadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('leadId').value;
+            const data = {
+                serial: Number(document.getElementById('leadSerial').value),
+                name: document.getElementById('leadName').value,
+                position: document.getElementById('leadPos').value,
+                image: document.getElementById('leadImg').value,
+                contact: document.getElementById('leadContact').value
+            };
+            if(id) {
+                await updateDoc(doc(db, "leaders", id), data);
+                alert("Leader updated successfully!");
+            } else {
+                await addDoc(collection(db, "leaders"), data);
+                alert("Leader added successfully!");
+            }
+            leadForm.reset();
+            document.getElementById('leadId').value = '';
+            document.getElementById('leadSubmitBtn').innerText = "Add Leader";
+            loadLeaders();
         });
 
-        // Add Work with serverTimestamp for precise ordering
-        document.getElementById('addWorkBtn').addEventListener('click', async () => {
-            try {
-                await addDoc(collection(db, "works"), {
-                    title: document.getElementById('workTitle').value,
-                    description: document.getElementById('workDesc').value,
-                    images: document.getElementById('workImgs').value,
-                    createdAt: serverTimestamp() // সিরিয়াল মেইনটেইন করার জন্য এটি যুক্ত করা হয়েছে
-                });
-                alert('Work published successfully!');
-                // ফর্ম রিসেট করা
-                document.getElementById('workTitle').value = '';
-                document.getElementById('workDesc').value = '';
-                document.getElementById('workImgs').value = '';
-            } catch (e) { alert('Error: ' + e.message); }
+        window.editLeader = async function(id) {
+            const d = (await getDoc(doc(db, "leaders", id))).data();
+            document.getElementById('leadId').value = id;
+            document.getElementById('leadSerial').value = d.serial;
+            document.getElementById('leadName').value = d.name;
+            document.getElementById('leadPos').value = d.position;
+            document.getElementById('leadImg').value = d.image;
+            document.getElementById('leadContact').value = d.contact;
+            document.getElementById('leadSubmitBtn').innerText = "Update Leader";
+        }
+
+        window.deleteLeader = async function(id) {
+            if(confirm("Are you sure to delete this leader?")) {
+                await deleteDoc(doc(db, "leaders", id));
+                loadLeaders();
+            }
+        }
+
+        async function loadLeaders() {
+            const list = document.getElementById('leaderList');
+            list.innerHTML = 'Loading...';
+            const snap = await getDocs(query(collection(db, "leaders"), orderBy("serial", "asc")));
+            list.innerHTML = '';
+            snap.forEach(docSnap => {
+                const d = docSnap.data();
+                list.innerHTML += `
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-serial">#${d.serial}</span>
+                            <strong>${d.name}</strong> (${d.position})
+                        </div>
+                        <div>
+                            <button class="btn btn-edit" onclick="editLeader('${docSnap.id}')">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteLeader('${docSnap.id}')">Delete</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // --- WORKS CRUD ---
+        const workForm = document.getElementById('workForm');
+        workForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('workId').value;
+            const data = {
+                serial: Number(document.getElementById('workSerial').value),
+                title: document.getElementById('workTitle').value,
+                images: document.getElementById('workImgs').value,
+                description: document.getElementById('workDesc').value
+            };
+            if(id) {
+                await updateDoc(doc(db, "works", id), data);
+                alert("Work updated successfully!");
+            } else {
+                await addDoc(collection(db, "works"), data);
+                alert("Work added successfully!");
+            }
+            workForm.reset();
+            document.getElementById('workId').value = '';
+            document.getElementById('workSubmitBtn').innerText = "Add Recent Work";
+            loadWorks();
         });
+
+        window.editWork = async function(id) {
+            const d = (await getDoc(doc(db, "works", id))).data();
+            document.getElementById('workId').value = id;
+            document.getElementById('workSerial').value = d.serial;
+            document.getElementById('workTitle').value = d.title;
+            document.getElementById('workImgs').value = d.images;
+            document.getElementById('workDesc').value = d.description;
+            document.getElementById('workSubmitBtn').innerText = "Update Recent Work";
+        }
+
+        window.deleteWork = async function(id) {
+            if(confirm("Are you sure to delete this work?")) {
+                await deleteDoc(doc(db, "works", id));
+                loadWorks();
+            }
+        }
+
+        async function loadWorks() {
+            const list = document.getElementById('workList');
+            list.innerHTML = 'Loading...';
+            const snap = await getDocs(query(collection(db, "works"), orderBy("serial", "asc")));
+            list.innerHTML = '';
+            snap.forEach(docSnap => {
+                const d = docSnap.data();
+                list.innerHTML += `
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-serial">#${d.serial}</span>
+                            <strong>${d.title}</strong>
+                        </div>
+                        <div>
+                            <button class="btn btn-edit" onclick="editWork('${docSnap.id}')">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteWork('${docSnap.id}')">Delete</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // Initial Load
+        loadActivities();
+        loadLeaders();
+        loadWorks();
     </script>
 </body>
 </html>
